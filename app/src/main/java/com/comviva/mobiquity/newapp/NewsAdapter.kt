@@ -40,6 +40,8 @@ class NewsAdapter(val context: Context, val articles: List<Article>) :
         var title = itemView.findViewById<TextView>(R.id.articleTitle)
         var description = itemView.findViewById<TextView>(R.id.articleDescription)
         val cardParentBg: LinearLayout = itemView.card_parent_bg
+
+        
     }
 
 }

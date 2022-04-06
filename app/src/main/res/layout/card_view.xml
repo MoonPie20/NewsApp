@@ -12,7 +12,7 @@
         android:orientation="vertical"
         android:outlineAmbientShadowColor="@color/black"
         android:background="@drawable/rounded_corner_drawable_white"
-        android:layout_margin="20dp">
+        >
 
         <ImageView
             android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             tools:srcCompat="@tools:sample/avatars"
             android:scaleType="centerCrop"
             android:layout_margin="20dp"
-            android:id="@+id/articleImage"></ImageView>
+            android:id="@+id/articleImage"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:textSize="20sp"
-            android:fontFamily="sans-serif-black"></TextView>
+            android:fontFamily="sans-serif-black"/>
 
         <TextView
             android:layout_width="match_parent"

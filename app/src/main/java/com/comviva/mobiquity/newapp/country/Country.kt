@@ -1,5 +1,5 @@
 package com.comviva.mobiquity.newapp.country
 
-class CountryList {
-    
+class Country(val countryKey : String, val countryValue : String) {
+
 }

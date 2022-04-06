@@ -1,6 +1,7 @@
 package com.comviva.mobiquity.newapp
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +27,11 @@ class NewsAdapter(val context: Context, val articles: List<Article>) :
         val article = articles[position]
         holder.title.text = article.title
         val imageUrl = article.urlToImage
-        Glide.with(context).load(imageUrl).into(holder.image)
+        Glide
+            .with(context)
+            .load(imageUrl)
+            .fallback(R.drawable.img)
+            .into(holder.image)
         holder.description.text = article.description
 
     }

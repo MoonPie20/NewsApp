@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_margin="20dp"
+        android:outlineAmbientShadowColor="@color/black"
+        android:scaleType="centerCrop"
+        android:id="@+id/imageArticleDetail"
+        tools:srcCompat="@tools:sample/avatars"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/atricledetailstitle"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:textSize="20dp"
+        android:fontFamily="sans-serif-black"
+        android:maxLines="2"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:fontFamily="sans-serif"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:id="@+id/atricledetailsdescription"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Published By : "
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:textSize="12sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/publishedBy"
+            android:textSize="12sp"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date : "
+            android:layout_marginStart="20dp"
+            android:textSize="12sp"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/datepublished"
+            android:textSize="12sp"
+
+            />
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/readfullbutton"
+        android:layout_margin="20dp"
+        android:layout_gravity="end"
+        android:text="Read full Article"
+
+        />
+</LinearLayout>

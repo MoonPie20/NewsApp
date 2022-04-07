@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewApp">
         <activity
+            android:name=".ArtilceDetails"
+            android:exported="false" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar"
@@ -19,13 +22,12 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>/>
+            </intent-filter>
+            />
         </activity>
-
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

@@ -1,11 +1,11 @@
 package com.comviva.mobiquity.newapp
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.Button
-import android.widget.Spinner
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.comviva.mobiquity.newapp.Router.countrySelected
@@ -20,6 +20,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import androidx.recyclerview.widget.DividerItemDecoration
+import com.comviva.mobiquity.newapp.news.NewsAdapter
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +31,19 @@ class MainActivity : AppCompatActivity() {
         get() = findViewById(R.id.backButton)
 
 
+    private var doubleBackToExitPressedOnce = false
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        listOfCOuntries.clear()
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
+
+        Handler(Looper.getMainLooper()).postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -46,17 +61,19 @@ class MainActivity : AppCompatActivity() {
                 if (pageNumber > 1) {
                     backButton.visibility = View.VISIBLE
                 }
-                getNews(countrySelectedCode, pageNumber)
+                getNews(countrySelectedCode!!, pageNumber)
             }
 
         })
         backButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
+                backButton.visibility=View.GONE
                 pageNumber--
                 if (pageNumber < 1) {
                     pageNumber = 1
+
                 }
-                getNews(countrySelectedCode, pageNumber)
+                getNews(countrySelectedCode!!, pageNumber)
             }
 
         })
@@ -80,7 +97,7 @@ class MainActivity : AppCompatActivity() {
                 pageNumber=1
                 countrySelectedCode = listOfCOuntries.get(position).countryKey
                 countrySelected = listOfCOuntries.get(position).countryValue
-                getNews(countrySelectedCode, pageNumber)
+                getNews(countrySelectedCode!!, pageNumber)
             }
 
             override fun onNothingSelected(adapterView: AdapterView<*>?) {
@@ -124,6 +141,13 @@ class MainActivity : AppCompatActivity() {
                     adapter = NewsAdapter(this@MainActivity, listofArticles)
                     newsListDisplay.adapter = adapter
                     newsListDisplay.layoutManager = LinearLayoutManager(this@MainActivity)
+                    newsListDisplay.addItemDecoration(
+                        DividerItemDecoration(
+                            this@MainActivity,
+                            LinearLayout.VERTICAL
+                        )
+                    )
+
                 }
 
             }

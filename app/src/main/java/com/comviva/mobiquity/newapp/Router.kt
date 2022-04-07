@@ -7,7 +7,14 @@ object Router {
     var listofArticles = ArrayList<Article>()
     var listOfCOuntries = ArrayList<Country>()
     var countrySelected : String = ""
-    lateinit var countrySelectedCode : String
+
+    var selectedArticleTitle : String?=null
+    var selectedArticleDescription : String?=null
+    var selectedArticleAuthor : String?=null
+    var selectedArticledate : String?=null
+    var selectedArticleurl : String?=null
+    var selectedArticleurlImage : String?=null
+     var countrySelectedCode : String?=null
 
 
 }

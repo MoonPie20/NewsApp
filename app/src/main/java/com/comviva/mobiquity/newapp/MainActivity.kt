@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,21 +16,50 @@ import com.comviva.mobiquity.newapp.country.Country
 import com.comviva.mobiquity.newapp.country.StateListAdapter
 import com.comviva.mobiquity.newapp.news.News
 import com.comviva.mobiquity.newapp.news.NewsService
-import com.google.android.material.internal.ContextUtils.getActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class MainActivity : AppCompatActivity() {
     lateinit var adapter: NewsAdapter
+    var pageNumber = 1
+    private val backButton: Button
+        get() = findViewById(R.id.backButton)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initialiseCountryList()
+        setupButtons()
         setupSpinner()
+
+    }
+
+    private fun setupButtons() {
+
+        nextButton.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                pageNumber =2
+                if (pageNumber > 1) {
+                    backButton.visibility = View.VISIBLE
+                }
+                getNews(countrySelectedCode, pageNumber)
+            }
+
+        })
+        backButton.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                pageNumber--
+                if (pageNumber < 1) {
+                    pageNumber = 1
+                }
+                getNews(countrySelectedCode, pageNumber)
+            }
+
+        })
 
     }
 
@@ -48,9 +77,10 @@ class MainActivity : AppCompatActivity() {
                 position: Int,
                 l: Long
             ) {
+                pageNumber=1
                 countrySelectedCode = listOfCOuntries.get(position).countryKey
                 countrySelected = listOfCOuntries.get(position).countryValue
-                getNews(countrySelectedCode)
+                getNews(countrySelectedCode, pageNumber)
             }
 
             override fun onNothingSelected(adapterView: AdapterView<*>?) {
@@ -80,9 +110,9 @@ class MainActivity : AppCompatActivity() {
         listOfCOuntries.add(Country("ch", "Switzerland"))
     }
 
-    private fun getNews(country: String) {
+    private fun getNews(country: String, page: Int) {
 
-        val news: Call<News> = NewsService.news.getHeadLines(country, 1)
+        val news: Call<News> = NewsService.news.getHeadLines(country, page)
         news.enqueue(object : Callback<News> {
             override fun onResponse(call: Call<News>, response: Response<News>) {
                 listofArticles.clear()

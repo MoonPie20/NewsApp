@@ -1,10 +1,10 @@
 package com.comviva.mobiquity.newapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.widget.ProgressBar
+import androidx.appcompat.app.AppCompatActivity
+import com.comviva.mobiquity.newapp.registration.RegistrationActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -14,7 +14,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         Handler().postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, RegistrationActivity::class.java)
             startActivity(intent)
             finish()
         }, SPLASH_TIME_OUT.toLong())

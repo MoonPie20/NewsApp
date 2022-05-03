@@ -7,21 +7,21 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.comviva.mobiquity.newapp.Router.countrySelected
 import com.comviva.mobiquity.newapp.Router.countrySelectedCode
 import com.comviva.mobiquity.newapp.Router.listOfCOuntries
 import com.comviva.mobiquity.newapp.Router.listofArticles
-import com.comviva.mobiquity.newapp.country.Country
-import com.comviva.mobiquity.newapp.country.StateListAdapter
 import com.comviva.mobiquity.newapp.news.News
+import com.comviva.mobiquity.newapp.news.NewsAdapter
 import com.comviva.mobiquity.newapp.news.NewsService
+import com.comviva.mobiquity.newapp.news.country.Country
+import com.comviva.mobiquity.newapp.news.country.StateListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import androidx.recyclerview.widget.DividerItemDecoration
-import com.comviva.mobiquity.newapp.news.NewsAdapter
 
 
 class MainActivity : AppCompatActivity() {

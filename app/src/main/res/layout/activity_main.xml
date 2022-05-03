@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select a country"
+        android:text="@string/select_country_heading"
         android:textSize="20sp"
         android:fontFamily="sans-serif-black"
         android:layout_margin="10dp"
@@ -47,12 +47,12 @@
             android:layout_weight=".5"
             android:visibility="gone"
             android:gravity="center"
-            android:text="Back" />
+            android:text="@string/newspage_back_button" />
 
         <Button
             android:layout_width="120dp"
             android:layout_height="70dp"
-            android:text="Next Page"
+            android:text="@string/next_page_button"
             android:id="@+id/nextButton"
             android:layout_margin="10dp"
             android:gravity="center"

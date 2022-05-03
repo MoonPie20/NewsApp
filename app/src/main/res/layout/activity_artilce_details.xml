@@ -22,7 +22,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:fontFamily="sans-serif-black"
         android:maxLines="2"
         />
@@ -42,7 +42,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Published By : "
+            android:text="@string/published_by_text"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:textSize="12sp"
@@ -64,7 +64,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Date : "
+            android:text="@string/article_date_label"
             android:layout_marginStart="20dp"
             android:textSize="12sp"
 
@@ -85,7 +85,7 @@
         android:id="@+id/readfullbutton"
         android:layout_margin="20dp"
         android:layout_gravity="end"
-        android:text="Read full Article"
+        android:text="@string/read_fullarticle_button"
 
         />
 </LinearLayout>

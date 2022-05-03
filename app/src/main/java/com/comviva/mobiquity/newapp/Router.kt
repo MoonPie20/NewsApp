@@ -1,7 +1,7 @@
 package com.comviva.mobiquity.newapp
 
-import com.comviva.mobiquity.newapp.country.Country
 import com.comviva.mobiquity.newapp.news.Article
+import com.comviva.mobiquity.newapp.news.country.Country
 
 object Router {
     var listofArticles = ArrayList<Article>()

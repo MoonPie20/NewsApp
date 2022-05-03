@@ -1,4 +1,4 @@
-package com.comviva.mobiquity.newapp.country;
+package com.comviva.mobiquity.newapp.news.country;
 
 import android.content.Context;
 import android.graphics.Color;

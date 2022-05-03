@@ -1,12 +1,16 @@
-package com.comviva.mobiquity.newapp
+package com.comviva.mobiquity.newapp.news
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_artilce_details.*
 import android.content.Intent
 import android.net.Uri
-import android.widget.*
+import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.comviva.mobiquity.newapp.R
+import com.comviva.mobiquity.newapp.Router
 import com.comviva.mobiquity.newapp.Router.selectedArticleurl
 
 

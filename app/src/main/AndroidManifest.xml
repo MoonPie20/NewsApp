@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewApp">
         <activity
-            android:name=".ArtilceDetails"
+            android:name=".news.ArtilceDetails"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
@@ -27,7 +27,13 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
+        <activity
+            android:name=".registration.RegistrationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".login.LoginActivity"
+            android:exported="true" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

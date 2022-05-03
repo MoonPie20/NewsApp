@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">NewApp</string>
     <string name="world_news">World News</string>
+    <string name="register_title_text">Register</string>
+    <string name="enter_name_hint">Enter name</string>
+    <string name="enter_email_hint">Enter email address</string>
+    <string name="enter_password_hint">Enter a password</string>
+    <string name="register_button_text">Register</string>
+    <string name="already_have_account_text">Already have an account?</string>
+    <string name="login_click_text">Login Here!</string>
+    <string name="published_by_text">Published By :</string>
+    <string name="article_date_label">Date :</string>
+    <string name="read_fullarticle_button">Read full Article</string>
+    <string name="select_country_heading">Select a country</string>
+    <string name="newspage_back_button">Back</string>
+    <string name="next_page_button">Next Page</string>
 </resources>

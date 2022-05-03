@@ -8,7 +8,9 @@
     android:ellipsize="marquee"
     android:layout_gravity="start"
     android:paddingBottom="3dp"
+    android:textColor="@color/black"
     android:paddingTop="3dp"
     android:textSize="20sp"
     android:fontFamily="sans-serif"
+    android:hint="Select country"
     />

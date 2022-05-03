@@ -14,4 +14,9 @@
     <string name="select_country_heading">Select a country</string>
     <string name="newspage_back_button">Back</string>
     <string name="next_page_button">Next Page</string>
+    <string name="register_here_text">Register Here!</string>
+    <string name="dont_have_account_text">Don\'t have an account ?</string>
+    <string name="login_page_button">Login</string>
+    <string name="login_page_title">Login</string>
+    <string name="login_empty_emailpassword">Please enter email and password to login</string>
 </resources>

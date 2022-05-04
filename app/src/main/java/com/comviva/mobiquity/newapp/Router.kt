@@ -5,6 +5,7 @@ import com.comviva.mobiquity.newapp.news.country.Country
 
 object Router {
     var listofArticles = ArrayList<Article>()
+    var listofSearchResults = ArrayList<Article>()
     var listOfCOuntries = ArrayList<Country>()
     var countrySelected : String = ""
 

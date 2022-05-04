@@ -7,15 +7,18 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.comviva.mobiquity.newapp.Router.countrySelected
 import com.comviva.mobiquity.newapp.Router.countrySelectedCode
 import com.comviva.mobiquity.newapp.Router.listOfCOuntries
 import com.comviva.mobiquity.newapp.Router.listofArticles
+import com.comviva.mobiquity.newapp.Router.listofSearchResults
 import com.comviva.mobiquity.newapp.news.News
 import com.comviva.mobiquity.newapp.news.NewsAdapter
 import com.comviva.mobiquity.newapp.news.NewsService
+import com.comviva.mobiquity.newapp.news.SearchResults
 import com.comviva.mobiquity.newapp.news.country.Country
 import com.comviva.mobiquity.newapp.news.country.StateListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,10 +30,6 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
     lateinit var adapter: NewsAdapter
     var pageNumber = 1
-    private val backButton: Button
-        get() = findViewById(R.id.backButton)
-
-
     private var doubleBackToExitPressedOnce = false
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
@@ -42,42 +41,44 @@ class MainActivity : AppCompatActivity() {
         listOfCOuntries.clear()
         Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
 
-        Handler(Looper.getMainLooper()).postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+        Handler(Looper.getMainLooper()).postDelayed(Runnable {
+            doubleBackToExitPressedOnce = false
+        }, 2000)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initialiseCountryList()
-        setupButtons()
         setupSpinner()
+        setupSearchView()
 
     }
 
-    private fun setupButtons() {
+    private fun setupSearchView() {
+        searchView1.setOnClickListener {
+            searchView1.isIconified = false
+            searchView1.setIconifiedByDefault()
+        }
+        searchView1.queryHint = "Search..."
+        searchView1.setOnCloseListener {
+            noNewsFound.visibility = View.GONE
+            newsListDisplay.visibility = View.VISIBLE
 
-        nextButton.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(view: View?) {
-                pageNumber =2
-                if (pageNumber > 1) {
-                    backButton.visibility = View.VISIBLE
-                }
-                getNews(countrySelectedCode!!, pageNumber)
+            false
+        }
+        searchView1.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextSubmit(query: String): Boolean {
+                getSearchResults(searchView1.query.toString())
+                return false
             }
 
         })
-        backButton.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(view: View?) {
-                backButton.visibility=View.GONE
-                pageNumber--
-                if (pageNumber < 1) {
-                    pageNumber = 1
-
-                }
-                getNews(countrySelectedCode!!, pageNumber)
-            }
-
-        })
-
     }
 
     private fun setupSpinner() {
@@ -94,7 +95,7 @@ class MainActivity : AppCompatActivity() {
                 position: Int,
                 l: Long
             ) {
-                pageNumber=1
+                pageNumber = 1
                 countrySelectedCode = listOfCOuntries.get(position).countryKey
                 countrySelected = listOfCOuntries.get(position).countryValue
                 getNews(countrySelectedCode!!, pageNumber)
@@ -125,6 +126,42 @@ class MainActivity : AppCompatActivity() {
         listOfCOuntries.add(Country("in", "India"))
         listOfCOuntries.add(Country("no", "Norway"))
         listOfCOuntries.add(Country("ch", "Switzerland"))
+    }
+
+    private fun getSearchResults(searchQuery: String) {
+
+        val news: Call<SearchResults> = NewsService.news.getSearch(searchQuery)
+        news.enqueue(object : Callback<SearchResults> {
+            override fun onResponse(call: Call<SearchResults>, response: Response<SearchResults>) {
+                listofSearchResults.clear()
+                val searchResults: SearchResults? = response.body()
+                if (searchResults != null) {
+                    if (searchResults.totalResults.toInt() == 0) {
+                        noNewsFound.visibility = View.VISIBLE
+                        newsListDisplay.visibility = View.GONE
+
+                    } else {
+                        Log.d("newsapp", news.toString())
+                        listofSearchResults = searchResults.articles
+                        adapter = NewsAdapter(this@MainActivity, listofSearchResults)
+                        newsListDisplay.adapter = adapter
+                        newsListDisplay.layoutManager = LinearLayoutManager(this@MainActivity)
+                        newsListDisplay.addItemDecoration(
+                            DividerItemDecoration(
+                                this@MainActivity,
+                                LinearLayout.VERTICAL
+                            )
+                        )
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<SearchResults>, t: Throwable) {
+                Log.d("newsapp", "Error in api")
+                noNewsFound.visibility = View.VISIBLE
+            }
+
+        })
     }
 
     private fun getNews(country: String, page: Int) {

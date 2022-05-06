@@ -62,5 +62,16 @@
             android:orientation="horizontal"
             android:layout_height="wrap_content" />
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/navigation_menu"
+            android:background="@color/white"
+            android:layout_gravity="bottom"
+            >
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
     </LinearLayout>
+
+
 </LinearLayout>

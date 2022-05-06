@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etEmail"
+        android:text="@string/login_page_title"
+        android:textSize="45sp"
+        android:gravity="center"
+        android:layout_marginBottom="35dp"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:fontFamily="@font/lobster"
+
+       />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textSize="15sp"
+        android:layout_margin="10dp"
+        android:background="@drawable/custom_input"
+        android:hint="@string/enter_email_hint"
+        android:textColorHint="@color/grey"
+        android:layout_gravity="center"
+        android:drawableStart="@drawable/custom_email_icon"
+        android:drawablePadding="10dp"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
+        android:inputType="textEmailAddress"
+
+        />
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:id="@+id/etPassword"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/custom_input"
+        android:hint="@string/enter_password_hint"
+        android:textColorHint="@color/grey"
+        android:layout_gravity="center"
+        android:drawableStart="@drawable/custom_password_icon"
+        android:drawablePadding="10dp"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
+        android:inputType="textPassword"
+
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:id="@+id/loginButton"
+        android:layout_gravity="center"
+        android:background="@drawable/register_button"
+        android:text="@string/login_page_button"
+        android:textSize="15sp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="35dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@string/dont_have_account_text"
+            android:layout_marginEnd="5dp"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/registerHereButton"
+            android:textColor="@color/teal_200"
+            android:text="@string/register_here_text"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

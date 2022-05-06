@@ -58,7 +58,6 @@ class MainActivity : AppCompatActivity() {
     private fun setupSearchView() {
         searchView1.setOnClickListener {
             searchView1.isIconified = false
-            searchView1.setIconifiedByDefault()
         }
         searchView1.queryHint = "Search..."
         searchView1.setOnCloseListener {
